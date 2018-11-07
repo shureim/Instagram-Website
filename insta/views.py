@@ -5,5 +5,5 @@ from django.http  import HttpResponse
 def welcome(request):
     return render(request,'welcome.html')
 
-# def today(request):
-#     return render(request,'all-insta/insta.html')
+def today(request):
+    return render(request,'all-insta/insta.html')
