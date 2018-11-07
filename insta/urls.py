@@ -3,5 +3,5 @@ from . import views
 
 urlpatterns=[
     # url('^$',views.welcome,name = 'welcome'),
-    # url('^$',views.today,name='instaToday'),
+    url('^$',views.today,name='instaToday'),
 ]
