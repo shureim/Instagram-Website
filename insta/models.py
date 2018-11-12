@@ -24,16 +24,16 @@ class Profile(models.Model):
     def search_by_username(cls,search_term):
         insta = cls.objects.filter(user__username=search_term)
         return insta
-#
-# class Image(models.Model):
-#     image = models.ImageField(upload_to = 'images/', blank = True)
-#     image_name = models.CharField(max_length = 30)
-#     image_caption = models.TextField(max_length = 200)
-#     profile = models.ForeignKey(User,on_delete = models.CASCADE)
-#     photo_date = models.DateTimeField(auto_now_add=True)
-#
-#
-#
+
+class Image(models.Model):
+    image = models.ImageField(upload_to = 'images/', blank = True)
+    image_name = models.CharField(max_length = 30)
+    image_caption = models.TextField(max_length = 200)
+    profile = models.ForeignKey(User,on_delete = models.CASCADE)
+    photo_date = models.DateTimeField(auto_now_add=True)
+
+
+
 #     def save_image(self):
 #         self.save()
 #
