@@ -49,11 +49,11 @@ class Image(models.Model):
     def get_image(cls, image_id):
         image = cls.objects.get(id=image_id)
         return image
-#
-# class Comment(models.Model):
-#     comment_photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
-#     username = models.ForeignKey(User,on_delete = models.CASCADE)
-#     comment = models.CharField(max_length = 400)
+
+class Comment(models.Model):
+    comment_photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
+    username = models.ForeignKey(User,on_delete = models.CASCADE)
+    comment = models.CharField(max_length = 400)
 #
 #
 #     def save_comment(self):
