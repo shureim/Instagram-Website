@@ -39,11 +39,11 @@ class Image(models.Model):
 
     def delete_image(self):
         self.delete()
-#
-#     @classmethod
-#     def get_all(cls):
-#         images = cls.objects.all()
-#         return images
+
+    @classmethod
+    def get_all(cls):
+        images = cls.objects.all()
+        return images
 #
 #     @classmethod
 #     def get_image(cls, image_id):
