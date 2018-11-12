@@ -58,9 +58,9 @@ class Comment(models.Model):
 
     def save_comment(self):
         self.save()
-#
-#     def delete_comment(self):
-#         self.delete()
+
+    def delete_comment(self):
+        self.delete()
 #
 #     verbose_name_plural = "Categories"
 #
