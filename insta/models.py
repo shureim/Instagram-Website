@@ -54,10 +54,10 @@ class Comment(models.Model):
     comment_photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
     username = models.ForeignKey(User,on_delete = models.CASCADE)
     comment = models.CharField(max_length = 400)
-#
-#
-#     def save_comment(self):
-#         self.save()
+
+
+    def save_comment(self):
+        self.save()
 #
 #     def delete_comment(self):
 #         self.delete()
