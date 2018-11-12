@@ -44,11 +44,11 @@ class Image(models.Model):
     def get_all(cls):
         images = cls.objects.all()
         return images
-#
-#     @classmethod
-#     def get_image(cls, image_id):
-#         image = cls.objects.get(id=image_id)
-#         return image
+
+    @classmethod
+    def get_image(cls, image_id):
+        image = cls.objects.get(id=image_id)
+        return image
 #
 # class Comment(models.Model):
 #     comment_photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
