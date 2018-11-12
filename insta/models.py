@@ -14,11 +14,11 @@ class Profile(models.Model):
 
     def delete_profile(self):
         self.delete()
-#
-#     @classmethod
-#     def update_profile(cls,profile,update):
-#          updated = cls.objects.filter(Image_name=profile).update(name=update)
-#          return updated
+
+    @classmethod
+    def update_profile(cls,profile,update):
+         updated = cls.objects.filter(Image_name=profile).update(name=update)
+         return updated
 #
 #     @classmethod
 #     def search_by_username(cls,search_term):
