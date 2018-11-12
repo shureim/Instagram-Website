@@ -61,9 +61,9 @@ class Comment(models.Model):
 
     def delete_comment(self):
         self.delete()
-#
-#     verbose_name_plural = "Categories"
-#
-#     def get_comments_by_images(cls, id):
-#         comments = Comment.objects.filter(image_pk = id)
-#         return comments
+
+    verbose_name_plural = "Categories"
+
+    def get_comments_by_images(cls, id):
+        comments = Comment.objects.filter(image_pk = id)
+        return comments
