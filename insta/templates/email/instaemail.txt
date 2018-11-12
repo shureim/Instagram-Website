@@ -1,0 +1,4 @@
+Hello {{name}}
+
+Welcome to the Instagram Website You will find the most exciting
+experience and also fill free to explore

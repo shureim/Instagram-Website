@@ -1,4 +1,5 @@
 {% load bootstrap3 %}
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -9,12 +10,14 @@
     {% block styles %}
       {% bootstrap_css %}
           <link rel="stylesheet" href="{% static 'css/baseinsta.css' %}">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     {% endblock %}
   </head>
   <body>
     {% include "navbar.html" %}
+    <hr>
     {% block content %}
-      <h1 class="text-center"> Instagram Website</h1>
+
     {% endblock%}
 
     {% block script %}

@@ -1,0 +1,42 @@
+<!-- {% extends 'all-insta/base.html' %}
+{% block content %}
+{{ block.super }}
+
+<div class="container">
+
+  <div class="row">
+    {% for insta_item in insta %}
+      <div class="col-md-7 well">
+
+          <h5> <b>{{insta_item.profile}} </b></h5>
+          <a href="{% url 'image' insta_item.id %}"><img  src="{{insta_item.image.url}}" class="img-responsive" alt="Image" width="500px" height="450px"></a>
+          <br>
+          <h4 class="btn btn-lg"><i class="far fa-heart" style="font-size:24px"></i></h4>{{insta_item.likes}}
+          <a href="/comment-photo"> <h4 class="btn btn-lg" ><i class="far fa-comment" style="font-size:24px;color:black;"></i> </h4> </a>{{insta_item.comment}}
+          <br>
+          {{insta_item.image_caption}}
+
+          <h6 class="displaying comments on an image"><br><br>
+
+            {% for comment in insta_item.comments.all %}
+              <h6 class="comment-list__comment">
+              <a class="user"> <em>{{ comment.user.username }}</em></a>
+                <span class="text-muted">{{ comment.comment }}</span>
+              </h6>
+            {% endfor %}
+
+      </div>
+    {% endfor%}
+    <div class="col-md-3 well">
+      <a href="{%url 'new-image'%}">Upload post</a>
+    </div>
+  </div>
+
+
+
+
+
+</div>
+
+
+{% endblock %} -->

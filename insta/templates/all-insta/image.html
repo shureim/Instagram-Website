@@ -1,0 +1,46 @@
+<!-- {%extends 'all-insta/base.html'%}
+
+ {% block content %}
+ <div class="container">
+   <div class="row">
+     <h1 class="text-center">{{image.image_name}}</h1>
+   </div>
+   <hr>
+
+   <div class="row">
+     <div class="col-md-5">
+     </div>
+     <div class="col-md-2">
+       <img src="{{image.image.url}}"  class="img-responsive" alt="">
+     </div>
+     <div class="col-md-5">
+     </div>
+   </div>
+<br>
+<br>
+
+    <div class="row">
+    {% autoescape on %}
+    {{image.post| safe}}
+    {% endautoescape %}
+
+    </div>
+
+
+   <div class="row">
+     <div class="col-md-2">
+     </div>
+     <div class="col-md-8">
+
+       <p class = "text-center">{{image.image_caption}}</p>
+     </div>
+     <div class="col-md-2">
+     </div>
+   </div>
+
+
+     <footer class="text-center">Image posted since ({{image.photo_date|timesince}})</footer>
+
+ </div>
+
+ {% endblock %} -->
