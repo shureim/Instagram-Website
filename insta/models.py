@@ -9,8 +9,8 @@ class Profile(models.Model):
     user = models.ForeignKey(User,on_delete = models.CASCADE)
     bio = models.TextField(max_length = 100)
 
-#     def save_profile(self):
-#         self.save()
+    def save_profile(self):
+        self.save()
 #
 #     def delete_profile(self):
 #         self.delete()
