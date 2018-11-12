@@ -71,19 +71,19 @@ def edit_profile(request):
         form = NewProfileForm()
     return render(request,'edit_profile.html', {'form':form})
 
-# def search_results(request):
-#
-#     if 'profile' in request.GET and request.GET["profile"]:
-#         search_term = request.GET.get("profile")
-#         searched_profile = Profile.search_by_username(search_term)
-#         message = f"{search_term}"
-#
-#         return render(request, 'all-insta/search.html',{"message":message,"profiles": searched_profile})
-#
-#     else:
-#         message = "You haven't searched for any term"
-#         return render(request, 'all-insta/search.html',{"message":message})
-#
+def search_results(request):
+
+    if 'profile' in request.GET and request.GET["profile"]:
+        search_term = request.GET.get("profile")
+        searched_profile = Profile.search_by_username(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all-insta/search.html',{"message":message,"profiles": searched_profile})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all-insta/search.html',{"message":message})
+
 # def search_profile(request,profile_id):
 #     try :
 #         profile = Profile.objects.get(id = profile_id)
