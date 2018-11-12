@@ -19,11 +19,11 @@ class Profile(models.Model):
     def update_profile(cls,profile,update):
          updated = cls.objects.filter(Image_name=profile).update(name=update)
          return updated
-#
-#     @classmethod
-#     def search_by_username(cls,search_term):
-#         insta = cls.objects.filter(user__username=search_term)
-#         return insta
+
+    @classmethod
+    def search_by_username(cls,search_term):
+        insta = cls.objects.filter(user__username=search_term)
+        return insta
 #
 # class Image(models.Model):
 #     image = models.ImageField(upload_to = 'images/', blank = True)
