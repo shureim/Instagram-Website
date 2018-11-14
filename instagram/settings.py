@@ -40,27 +40,21 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'fhf(tbr@*218hm&83z&365mdhn4ozhjhx$9k@ve^l^ppxb27^u'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
 ALLOWED_HOSTS = []
 ACCOUNT_ACTIVATION_DAYS = 7
 
 # Application definition
 
 INSTALLED_APPS = [
-    'tinymce',
-    'bootstrap3',
-    'insta.apps.InstaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'tinymce',
+    'bootstrap3',
+    'insta.apps.InstaConfig',
 ]
 
 MIDDLEWARE = [
