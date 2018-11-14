@@ -14,8 +14,6 @@ urlpatterns=[
     url(r'^ajax-like-photo$', views.like, name='like'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^search_profile/(\d+)',views.search_profile,name = 'search_profile'),
-
-
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
