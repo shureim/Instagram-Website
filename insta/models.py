@@ -50,8 +50,15 @@ class Image(models.Model):
         image = cls.objects.get(id=image_id)
         return image
 
+    def like(self, comment_photo):
+        if self.mylikes.filter(comment_photo=comment_photo).count() == 0:
+            Likes(comment_photo=comment_photo,user=self).save()
+
+    def unlike(self, comment_photo):
+        self.mylikes.filter(comment_photo=comment_photo).all().delete()
+
 class Comment(models.Model):
-    comment_photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
+    photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
     username = models.ForeignKey(User,on_delete = models.CASCADE)
     comment = models.CharField(max_length = 400)
 
@@ -67,3 +74,7 @@ class Comment(models.Model):
     def get_comments_by_images(cls, id):
         comments = Comment.objects.filter(image_pk = id)
         return comments
+
+class Likes(models.Model):
+    postid = models.IntegerField(null = True)
+    like = models.CharField(max_length = 30, null = True)

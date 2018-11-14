@@ -1,5 +1,12 @@
 {% extends 'all-insta/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+{% load staticfiles %}
+
 {% block content %}
+{{block.super}}
+  <link rel="stylesheet" href="../static/css/profile.css">
+
 <div class="container">
   <div class="row">
     {% if profile.user %}
@@ -8,22 +15,30 @@
       img.radius {
       border-radius: 70%;
       }
-
       </style>
       <img  src="{{profile.profile_photo.url}}" class="radius" alt="Image" class="img-responsive">
       <p> Bio: {{profile.bio}}</p>
     </div>
-    <div class="col-md-6">
-      <h4><img style="border-radius: 50% ; padding: 0.15rem;  width: 45px; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);" src="{{profile.profile_photo.url}}" class="radius" alt="Image" class="img-responsive"> {{profile.user}}
-      <a href="{%url 'edit-profile'%}">Edit profile</a> </h4>
-      <div class="col-md-6">
 
-      </div>
+    <div class="profile-user-settings">
+
+      <h1 class="profile-user-name">{{profile.user}}</h1>
+
+      <button class="btn profile-edit-btn"><a href="/edit-profile">Edit profile</a> </button>
+
+      <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true" data-toggle="modal" data-target="#settings"></i></button>
 
     </div>
-    <div class="col-md-3">
+    <div class="profile-stats">
+
+      <ul>
+        <li><span class="profile-stat-count"></span> posts</li>
+        <li><span class="profile-stat-count">0</span> followers</li>
+        <li><span class="profile-stat-count">0</span> following</li>
+      </ul>
 
     </div>
+
     {% else %}
     </p>No profile description</p>
     {% endif %}

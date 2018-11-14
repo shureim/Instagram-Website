@@ -1,12 +1,12 @@
 from django.test import TestCase
-from .models import Image, profile
+from .models import Image
 
 # Create your tests here.
 class ImageTestClass(TestCase):
 
     #set up method
     def setUp(self):
-        self.tarick = Image(Image_name = 'tarick',image_caption = 'tarick',likes = 1, comment = 'tarick')
+        self.tarick = Image(image = "images/4k-wallpaper-abstract-abstract-expressionism-1266808.jpg", image_name = 'tarick',image_caption = 'color image')
 
     # testing instance
     def test_instance(self):

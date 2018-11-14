@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http  import HttpResponse,Http404
-from .models import Image,Profile,Comment
+from .models import Image,Profile,Comment,Likes
 from django.core.exceptions import ObjectDoesNotExist
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
@@ -22,8 +22,12 @@ def welcome(request):
 
 @login_required(login_url='/accounts/login/')
 def today(request):
+    current_user = request.user
     insta = Image.get_all()
-    return render(request,'all-insta/index.html',{'insta':insta})
+    # profile = Profile.objects.get(user = current_user)
+    profiles = Profile.objects.all()
+    form = NewCommentForm()
+    return render(request,'all-insta/index.html',{'insta':insta, 'profile':profile,'profiles':profiles,'form':form})
 
 def image(request,image_id):
     try:
@@ -98,7 +102,7 @@ def comment_photo(request, image_id):
     current_user = request.user
     if request.method == 'POST':
         form = NewCommentForm(request.POST, request.FILES)
-        image = get_object_or_404(Image, pk = image_id)
+        image = get_object_or_404(Image,pk=image_id)
         if form.is_valid():
             comment = form.save(commit = False)
             comment.comment = current_user
@@ -109,14 +113,7 @@ def comment_photo(request, image_id):
         form = NewCommentForm()
     return render(request,'comment.html', {'form':form})
 
-# def comment(request,image_id):
-#     #Getting comment form data
-#     if request.method == 'POST':
-#         image = get_object_or_404(Image, pk = image_id)
-#         form = CommentForm(request.POST)
-#         if form.is_valid():
-#             comment = form.save(commit=False)
-#             comment.user = request.user
-#             comment.image = image
-#             comment.save()
-#     return redirect('index')
+def like(request, image_id):
+    ajax = AjaxLikePhoto(request.GET, request.user)
+    context = {'ajax_output':ajax_output()}
+    return render(request, 'ajax.html', context)

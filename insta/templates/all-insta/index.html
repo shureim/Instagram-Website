@@ -1,41 +1,48 @@
 {% extends 'all-insta/base.html' %}
+{% load bootstrap3 %}
+{% load static %}
+
 {% block content %}
-{{ block.super }}
+{{block.super}}
+  <link rel="stylesheet" href="../static/css/index.css">
 
 <div class="container">
-
   <div class="row">
-    {% for insta_item in insta %}
-      <div class="col-md-7 well">
+    <div class="col-md-7">
+      <div class="row">
+        {% for insta_item in insta %}
+        <div class="col-md-2">
 
-          <h5> <b>{{insta_item.profile}} </b></h5>
-          <a href="{% url 'image' insta_item.id %}"><img  src="{{insta_item.image.url}}" class="img-responsive" alt="Image" width="500px" height="450px"></a>
-          <br>
-          <h4 class="btn btn-lg"><i class="far fa-heart" style="font-size:24px"></i></h4>{{insta_item.likes}}
-          <a href="/comment-photo"> <h4 class="btn btn-lg" ><i class="far fa-comment" style="font-size:24px;color:black;"></i> </h4> </a>{{insta_item.comment}}
-          <br>
-          {{insta_item.image_caption}}
+        </div>
+          <div class="col-md-10 well">
 
-          <h6 class="displaying comments on an image"><br><br>
+              <p><img src="{{profile.profile_photo.url}}" class="img-responsive" alt="Image" width="50px" height="45px" style="border-radius: 50% ; padding: 0.15rem;  width: 45px; background: linear-gradient(to right bottom, #d82c66, #c92e3b, #e15e43, #f3813f, #ffa63e);"></a>
+                 <strong> {{insta_item.profile}} </strong></p>
+              <a href="{% url 'image' insta_item.id %}"><img  src="{{insta_item.image.url}}" class="img-responsive" alt="Image" width="500px" height="450px"></a>
+              <h4 class="btn btn-lg"><i class="far fa-heart" style="font-size:24px"></i></h4>{{insta_item.likes}}
+              <a href="{% url 'comment-photo'%}"> <h4 class="btn btn-lg" ><i class="far fa-comment" style="font-size:24px;color:black;"></i> </h4> </a>{{insta_item.comment}}
+              <hr>
+              <b>Comment: </b>{{insta_item.image_caption}}
 
-            {% for comment in insta_item.comments.all %}
-              <h6 class="comment-list__comment">
-              <a class="user"> <em>{{ comment.user.username }}</em></a>
-                <span class="text-muted">{{ comment.comment }}</span>
-              </h6>
-            {% endfor %}
+          </div>
 
+
+        {% endfor%}
       </div>
-    {% endfor%}
-    <div class="col-md-3 well">
-      <a href="{%url 'new-image'%}">Upload post</a>
     </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-4 well" style="max-width:270px;">
+
+      <p>Suggestions For You  <b style="float:right;"> See All</b></p>
+        {% for profile in profiles %}
+          <p><b>{{profile.user}}</b> <b style="color:#3897f0;float:right;">Follow</b></p>
+        {% endfor%}
+
+
+    </div>
+
   </div>
-
-
-
-
-
 </div>
 
 
