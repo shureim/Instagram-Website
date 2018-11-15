@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 # Create your models here.
 class Profile(models.Model):
     profile_photo = models.ImageField(upload_to = 'images/', blank = True)
-    user = models.ForeignKey(User,on_delete = models.CASCADE)
+    user = models.ForeignKey(User,on_delete = models.CASCADE,null = True)
     bio = models.TextField(max_length = 100)
 
     def save_profile(self):
@@ -50,12 +50,6 @@ class Image(models.Model):
         image = cls.objects.get(id=image_id)
         return image
 
-    def like(self, comment_photo):
-        if self.mylikes.filter(comment_photo=comment_photo).count() == 0:
-            Likes(comment_photo=comment_photo,user=self).save()
-
-    def unlike(self, comment_photo):
-        self.mylikes.filter(comment_photo=comment_photo).all().delete()
 
 class Comment(models.Model):
     photo = models.ForeignKey(Image,on_delete = models.CASCADE, blank = True)
@@ -74,7 +68,3 @@ class Comment(models.Model):
     def get_comments_by_images(cls, id):
         comments = Comment.objects.filter(image_pk = id)
         return comments
-
-class Likes(models.Model):
-    postid = models.IntegerField(null = True)
-    like = models.CharField(max_length = 30, null = True)

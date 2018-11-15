@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http  import HttpResponse,Http404
-from .models import Image,Profile,Comment,Likes
+from .models import Image,Profile,Comment
 from django.core.exceptions import ObjectDoesNotExist
 from .email import send_welcome_email
 from django.contrib.auth.decorators import login_required
@@ -24,7 +24,7 @@ def welcome(request):
 def today(request):
     current_user = request.user
     insta = Image.get_all()
-    # profile = Profile.objects.get(user = current_user)
+    profile = Profile.objects.get(user = current_user)
     profiles = Profile.objects.all()
     form = NewCommentForm()
     return render(request,'all-insta/index.html',{'insta':insta, 'profile':profile,'profiles':profiles,'form':form})
