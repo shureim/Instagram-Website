@@ -4,7 +4,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns=[
-    url('^$',views.today,name='instaToday'),
+    url(r'^$',views.today,name='instaToday'),
     url(r'^no_profile/$',views.welcome,name = 'welcome'),
     url(r'^image/(\d+)',views.image,name ='image'),
     url(r'^new/image$', views.new_image, name='new-image'),
