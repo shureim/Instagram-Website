@@ -24,7 +24,7 @@ def welcome(request):
 def today(request):
     current_user = request.user
     insta = Image.get_all()
-    profile = Profile.objects.get(user = current_user)
+    # profile = Profile.objects.get(user = current_user)
     profiles = Profile.objects.all()
     form = NewCommentForm()
     return render(request,'all-insta/index.html',{'insta':insta, 'profile':profile,'profiles':profiles,'form':form})

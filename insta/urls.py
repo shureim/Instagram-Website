@@ -11,7 +11,6 @@ urlpatterns=[
     url(r'^profile/',views.profile,name = 'insta-Profile'),
     url(r'^edit-profile/',views.edit_profile,name = 'edit-profile'),
     url(r'^comment-photo/',views.comment_photo,name = 'comment-photo'),
-    url(r'^ajax-like-photo$', views.like, name='like'),
     url(r'^search/', views.search_results, name='search_results'),
     url(r'^search_profile/(\d+)',views.search_profile,name = 'search_profile'),
 ]

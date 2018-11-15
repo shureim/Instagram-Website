@@ -22,12 +22,20 @@ class ProfileTestClass(TestCase):
         self.new_profile.save_profile()
         self.new_profile.delete_profile()
 
+    # def test_update_bio(self):
+    #     self.new_profile.save_profile()
+    #     self.new_profile = Profile.objects.get(id=50)
+    #     profile = self.new_profile
+    #     profile.update_bio('changed user bio')
+    #     self.updated_profile = Profile.objects.get(id=50)
+    #     self.assertEqual(self.updated_profile.bio,'changed user bio')
+
 
 class ImageTestClass(TestCase):
 
 
     def setUp(self):
-        self.new_image=Image(image="image.jpg",image_name="tarick",image_caption="color image",photo_date="two minutes ago")
+        self.new_image=Image(image="image.jpg",image_name="tarick",image_caption="moringa coding zone",photo_date="two minutes ago")
 
     def test_instance(self):
         self.assertTrue(isinstance(self.new_image,Image))
@@ -40,9 +48,16 @@ class ImageTestClass(TestCase):
         images = Image.objects.all()
         self.assertTrue(len(images) > 0)
 
-    # def test_delete_method(self):
-    #     '''
-    #     Function that tests whether an image can be deleted from the database
-    #     '''
-    #     # self.new_image.save_image()
-    #     self.new_image.delete_image()
+    def test_delete_method(self):
+        '''
+        Function that tests whether an image can be deleted from the database
+        '''
+        self.new_image.save_image()
+        self.new_image.delete_image()
+
+    def test_update_caption(self):
+        self.new_image.save_image()
+        self.new_image = Image.objects.get(id = 3 )
+        self.new_image.update_caption('changed Image caption')
+        self.updated_image = Image.objects.get(id = 3)
+        self.assertEqual(self.updated_image.image_caption,"changed Image caption")
